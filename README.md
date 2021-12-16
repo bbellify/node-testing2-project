@@ -25,6 +25,7 @@ Here is a checklist of tasks to help you put your project together:
     also added knex-cleaner
 
 - Configure jest and eslint using `npx <libname> --init`.
+    don't forget to add `"test":true` to eslint config
 
 - Create a `knexfile.js` with "development" and "testing" configurations.
     new knexfile.js - `(npx?) knex init`

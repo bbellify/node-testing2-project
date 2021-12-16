@@ -34,8 +34,7 @@ function validateAlbum(req, res, next) {
     } else {
         req.album_name = album_name.trim()
         next()
-    }
-    
+    }    
 }
 
 
