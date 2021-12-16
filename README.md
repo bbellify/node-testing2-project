@@ -18,6 +18,8 @@ Here is a checklist of tasks to help you put your project together:
     -- `npx gitignore node`
 
 - Install express, knex, sqlite3 as plain dependencies. 
+    also added dotenv, cors
+        investigate cors config
 
 - Install jest, eslint, nodemon, supertest, cross-env as dev-dependencies.
     also added knex-cleaner
@@ -33,9 +35,14 @@ Here is a checklist of tasks to help you put your project together:
     new migrate file - `npx knex migrate:make migration-name`
     new seed file - `npx knex seed:make 00-seed-name` (00 for clean seed, so it can always be first)
         sample cleanup seed - use this with knex-cleaner
-        
+
 - Put together "start", "server", "rollback", "migrate" and "seed" scripts in your `package.json`.
+    also made `resetdb` script
+
 - Create a "test" script in your `package.json` using cross-env to inject a `NODE_ENV` of "testing".
+    could add `--watchAll` flag to rerun on changes
+
 - Create a basic express application with a few database access functions and a few endpoints.
+
 - Test your endpoints manually using Postman, HTTPie or similar.
 - Test your endpoints with supertest.
