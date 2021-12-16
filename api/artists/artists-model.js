@@ -25,9 +25,10 @@ function getAlbums(id) {
         .select('album_name')
 }
 
-function insertAlbum(id, album) {
+function insertAlbum(id, albumName) {
+
     const toAdd = {
-        ...album,
+        album_name: albumName,
         artist_id: id
     }
 
@@ -39,7 +40,6 @@ function insertAlbum(id, album) {
                 .first()
         })
 }
-
 
 module.exports = {
     getAll,
