@@ -1,9 +1,8 @@
 const express = require('express')
 const Artist = require('./artists-model')
-const { validateArtist } = require('./artists-middleware')
+const { validateId, validateArtist } = require('./artists-middleware')
 
 const router = express.Router()
-
 
 router.get('/', (req, res, next) => {
     Artist.getAll()
@@ -21,15 +20,11 @@ router.post('/', validateArtist, (req, res, next) => {
         .catch(next)
 })
 
-router.get('/:id', (req, res, next) => {
-    Artist.getById(req.params.id)
-        .then(artist => {
-            res.json(artist)
-        })
-        .catch(next)
+router.get('/:id', validateId, (req, res) => {
+    res.json(req.body.artist)
 })
 
-router.get('/:id/albums', (req, res, next) => {
+router.get('/:id/albums', validateId, (req, res, next) => {
     Artist.getAlbums(req.params.id)
         .then(albums => {
             res.json(albums)
@@ -37,7 +32,7 @@ router.get('/:id/albums', (req, res, next) => {
         .catch(next)
 })
 
-router.post('/:id/albums', (req, res, next) => {
+router.post('/:id/albums', validateId, (req, res, next) => {
     Artist.insertAlbum(req.params.id, req.body)
         .then(album => {
             res.status(201).json(album)
