@@ -22,7 +22,6 @@ Here is a checklist of tasks to help you put your project together:
         investigate cors config
 
 - Install jest, eslint, nodemon, supertest, cross-env as dev-dependencies.
-    also added knex-cleaner
 
 - Configure jest and eslint using `npx <libname> --init`.
     don't forget to add `"test":true` to eslint config
@@ -34,8 +33,7 @@ Here is a checklist of tasks to help you put your project together:
 
 - Create migration and seed files.
     new migrate file - `npx knex migrate:make migration-name`
-    new seed file - `npx knex seed:make 00-seed-name` (00 for clean seed, so it can always be first)
-        sample cleanup seed - use this with knex-cleaner
+    new seed file - `npx knex seed:make 00-seed-name` 
 
 - Put together "start", "server", "rollback", "migrate" and "seed" scripts in your `package.json`.
     also made `resetdb` script

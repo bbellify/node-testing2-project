@@ -13,8 +13,9 @@ const albums = [
 ]
 
 exports.seed = async function(knex) {
-  await knex('artists').truncate()
-    .insert(artists)
   await knex('albums').truncate()
-    .insert(albums)
+  await knex('artists').truncate()
+
+  await knex('artists').insert(artists)
+  await knex('albums').insert(albums)
 };
