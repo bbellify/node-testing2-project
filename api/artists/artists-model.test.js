@@ -12,6 +12,30 @@ afterAll(async () => {
     await db.destroy() // disconnects from db
 })
 
-it('tests sanity', () => {
-    
+it('tests sanity', () => {})
+
+describe('artists model', () => {
+
+    describe('getAll', () => {
+        it('returns all artists', async () => {
+            const res = await Artist.getAll()
+            expect(res).toHaveLength(2)
+        })
+    })
+
+    describe('insert', () => {
+        let res
+        beforeEach(async () => {
+            res = await Artist.insert({ artist_name: 'Kurt Vile'})
+        })
+        it('returns new artist', async () => {
+            expect(res).toMatchObject({ artist_name: 'Kurt Vile' })
+        })
+        it('adds a new artist to the db', async () => {
+            const kurt = await db('artists')
+                .where('artist_name', 'Kurt Vile')
+                .first()
+            expect(kurt).toMatchObject({ artist_name: 'Kurt Vile'})
+        })
+    })
 })
