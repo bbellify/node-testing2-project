@@ -54,13 +54,27 @@ describe('artists router', () => {
             res = await request(server)
                 .get('/api/artists/2')
         })
-        it('responds with 200 OK', () => {
+        it('responds with 200 OK', async () => {
             expect(res.status).toBe(200)
         })
-        it('responds with correct artist object', () => {
+        it('responds with correct artist object', async () => {
             expect(res.body).toMatchObject({ artist_name: 'Weezer' })
         })
     })
 
+    describe('[GET] albums by artist id', () => {
+        let res
+        beforeEach(async () => {
+            res = await request(server)
+                .get('/api/artists/1/albums')
+        })
+        it('responds with 200 OK', async () => {
+            expect(res.status).toBe(200)
+        })
+        it('responds with array of albums', async () => {
+            expect(res.body).toHaveLength(2)
+            expect(res.body[0]).toMatchObject({ album_name: 'Deja Entendu' })
+        })
+    })
 })
 
