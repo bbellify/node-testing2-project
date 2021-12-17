@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand",
+    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand --watchAll",
     "server": "nodemon index.js",
     "start": "node index.js",
     "migrate": "knex migrate:latest",
@@ -26,7 +26,6 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.4.1",
     "jest": "^27.4.5",
-    "knex-cleaner": "^1.3.1",
     "nodemon": "^2.0.15",
     "supertest": "^6.1.6"
   }

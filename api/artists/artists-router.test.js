@@ -14,3 +14,19 @@ afterAll(async () => {
 })
 
 
+it('is the correct env', () => {
+    expect(process.env.NODE_ENV).toBe('testing')
+})
+
+describe('artists router', () => {
+    describe('[GET] artists', () => {
+        let res
+        beforeEach(async () => {
+            res = await request(server).get('/artists')
+        })
+        it('responds with 200 OK', async () => {
+            expect(res.status).toBe(200)
+        })
+    })
+})
+
