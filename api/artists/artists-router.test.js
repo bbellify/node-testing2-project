@@ -76,5 +76,20 @@ describe('artists router', () => {
             expect(res.body[0]).toMatchObject({ album_name: 'Deja Entendu' })
         })
     })
+
+    describe('[POST] new album by artist id', () => {
+        let res
+        beforeEach(async () => {
+            res = await request(server)
+                .post('/api/artists/2/albums')
+                .send({ album_name: 'Maladroit' })
+        })
+        it('responds with 201 OK', async () => {
+            expect(res.status).toBe(201)
+        })
+        it('responds with new album created', async () => {
+            expect(res.body).toMatchObject({ album_name: 'Maladroit' })
+        })
+    })
 })
 
